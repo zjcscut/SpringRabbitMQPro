@@ -6,6 +6,8 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Scanner;
+
 /**
  * @author zhangjinci
  * @version 2016/8/9 18:32
@@ -14,13 +16,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageProducer {
 
-    private Logger logger = LoggerFactory.getLogger(MessageProducer.class);
+	private Logger logger = LoggerFactory.getLogger(MessageProducer.class);
 
-    @Autowired
-    private AmqpTemplate amqpTemplate;
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 
-    public void send(Object message){
-        logger.info("producer send message: " + message);
-        amqpTemplate.convertAndSend("queueTestkey",message);
-    }
+	public void send(Object message) {
+		logger.info("producer send message: " + message);
+		amqpTemplate.convertAndSend("queueTestKey", message);
+	}
 }
